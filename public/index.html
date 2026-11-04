@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Lector de noticias RSS y Atom: filtra, organiza y consulta tus fuentes favoritas.">
+  <title>RSS Feeder · Noticias a tu manera</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body data-theme="light">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">◔</div>
+      <div>
+        <h1>RSS Feeder</h1>
+        <p>Tu lector de noticias, sin algoritmos.</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-outline" id="themeButton" type="button" aria-label="Cambiar tema">☾ <span>Tema</span></button>
+      <button class="btn btn-primary" id="refreshButton" type="button">↻ <span>Actualizar</span></button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <aside class="sidebar">
+      <section class="panel">
+        <div class="heading-row">
+          <h2>Mis fuentes</h2>
+          <span class="count" id="sourceCount">0</span>
+        </div>
+        <form id="addFeedForm">
+          <label for="feedInput">Agregar feeds RSS o Atom</label>
+          <textarea id="feedInput" rows="3" placeholder="https://ejemplo.com/feed&#10;También puedes separar las URLs con comas" required></textarea>
+          <button class="btn btn-primary full" type="submit">+ Agregar fuentes</button>
+        </form>
+        <p class="helper">Las fuentes que agregues se guardan solo en este navegador.</p>
+      </section>
+
+      <section class="panel">
+        <div class="heading-row">
+          <h2>Explorar noticias</h2>
+          <button id="clearFilters" class="text-button" type="button">Limpiar filtros</button>
+        </div>
+        <label for="searchInput">Buscar</label>
+        <input id="searchInput" type="search" placeholder="Título, resumen o medio…" autocomplete="off">
+        <label for="sourceFilter">Fuente</label>
+        <select id="sourceFilter"><option value="">Todas las fuentes</option></select>
+        <label for="limitFilter">Máximo de noticias</label>
+        <select id="limitFilter">
+          <option value="50">50 noticias</option>
+          <option value="100" selected>100 noticias</option>
+          <option value="200">200 noticias</option>
+        </select>
+        <label class="check-row"><input id="showDates" type="checkbox" checked> Mostrar fechas de publicación</label>
+      </section>
+
+      <section class="panel sources-panel">
+        <div class="heading-row">
+          <h2>Fuentes agregadas</h2>
+          <button id="resetFeeds" class="text-button" type="button">Restablecer</button>
+        </div>
+        <ul class="feed-list" id="feedList" aria-label="Fuentes RSS guardadas"></ul>
+      </section>
+    </aside>
+
+    <section class="content" aria-label="Artículos">
+      <div class="content-top">
+        <div>
+          <p class="eyebrow">LECTOR DE ACTUALIDAD</p>
+          <h2>Últimas noticias</h2>
+          <p class="muted" id="resultsLabel">Preparando fuentes…</p>
+        </div>
+        <div class="stamp" id="updatedAt"></div>
+      </div>
+
+      <div class="notice" id="statusBox" role="status" aria-live="polite">Cargando noticias…</div>
+      <div class="error-box" id="errorBox" hidden>
+        <details>
+          <summary id="errorSummary">Algunas fuentes no respondieron</summary>
+          <ul id="errorList"></ul>
+        </details>
+      </div>
+      <div class="articles" id="articleList" aria-live="polite"></div>
+      <p class="empty" id="emptyState" hidden>No se encontraron noticias con los filtros seleccionados.</p>
+      <p class="footer-note">RSS Feeder · © 2026 Raúl Cámara · Las noticias pertenecen a sus respectivas fuentes.</p>
+    </section>
+  </main>
+</body>
+</html>
