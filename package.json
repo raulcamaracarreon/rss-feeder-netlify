@@ -12,6 +12,6 @@
     "fast-xml-parser": "^5.12.0"
   },
   "devDependencies": {
-    "netlify-cli": "^23.0.0"
+    "netlify-cli": "^27.16.2"
   }
 }
