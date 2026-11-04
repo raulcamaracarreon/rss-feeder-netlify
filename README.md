@@ -28,7 +28,10 @@ Requiere Node.js 22 o posterior.
 1. Clona el repositorio y entra en su carpeta.
 2. Ejecuta `npm install`.
 3. Ejecuta `npm test` para probar el analizador.
-4. Ejecuta `npm run dev` para iniciar Netlify Dev (habitualmente en http://localhost:8888).
+4. Instala Netlify CLI de manera independiente para desarrollo local con `npm install -g netlify-cli`.
+5. Ejecuta `npm run dev` para iniciar Netlify Dev (habitualmente en http://localhost:8888).
+
+**Nota:** Netlify CLI no se instala como dependencia del proyecto porque Netlify proporciona sus propias herramientas en el entorno de despliegue. Esto evita un problema de resolución de dependencias que impide completar la instalación en Netlify.
 
 **Importante:** no abras directamente `public/index.html` como archivo local: la aplicación utiliza la función `/.netlify/functions/rss`.
 
